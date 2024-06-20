@@ -79,7 +79,7 @@ nav ul li {
   left: 50%;
   padding: 8px;
 }
-.promo h2, p{
+.promo h2,.promo p{
   color: var(--secondary-color);
 }
 .promo button{

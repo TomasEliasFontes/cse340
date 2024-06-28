@@ -1,0 +1,11 @@
+<!-- The Content Heading -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<%# messages() %>
+
+<%- grid %> <!-- An EJS code block with an "unescaped" indicator —. This allows HTML to be displayed.-->
+

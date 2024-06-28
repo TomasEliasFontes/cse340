@@ -139,6 +139,36 @@ nav ul li {
   height: 80%;
 }
 
+/* Grid inventory */
+#inv-display {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#inv-display li {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--accent2-color);
+  text-align: center;
+  padding: 10px;
+}
+
+#inv-display img {
+  max-width: 100%;
+  height: auto;
+}
+
+#inv-display .namePrice {
+  padding: 10px 0;
+}
+
 
 /* Medium screens */
 @media screen and (min-width: 700px) {
@@ -164,11 +194,25 @@ nav ul li {
   .reviews, .upgrades {
     width: 48%; 
   }
+
+  #inv-display {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #inv-display li {
+    margin: 10px;
+  }
 }
 
 /* Large screens */
 @media (min-width: 1040px) {
   body {
     background-image: url('/images/site/small_check.png'); 
+  }
+  
+  #inv-display li {
+    max-width: 250px;
   }
 }

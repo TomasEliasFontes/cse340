@@ -69,12 +69,12 @@ nav {
 nav ul {
   list-style: none;
   padding: 0;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  text-align: center;
 }
 
 nav ul li {
-  margin-right: 15px;
+  margin: 5px;
 }
 
 nav a{
@@ -185,6 +185,16 @@ nav a:hover{
   padding: 10px 0;
 }
 
+.namePrice h2 a{
+  overflow: hidden;
+  text-decoration-line: none;
+  color: var(--accent1-color);
+}
+
+.namePrice h2 a:hover{
+  color: #00b0d4;
+}
+
 /* Vehicle Details */
 .vehicle-detail-container {
   margin: 0 auto;
@@ -251,6 +261,11 @@ nav a:hover{
 
   .main-content, .reviews-upgrades {
     flex-direction: row; 
+  }
+
+  nav ul{
+    display: flex;
+    justify-content: space-evenly;
   }
 
   .promo{

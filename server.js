@@ -11,9 +11,33 @@ const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
-const inventoryRoute = require("./routes/inventoryRoute");
+const inventoryRoute = require("./routes/inventoryRoute");//week 3 ↓
 const errorRoute = require("./routes/errorRoute");
 const utilities = require("./utilities");
+const session = require("express-session");//week 4 ↓
+const pool = require('./database/');
+const accountRoute = require("./routes/accountRoute");
+
+/* ***********************
+ * Middleware week 4
+ * ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware week 4
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
 
 /* ***********************
  * View Engine and Templates
@@ -26,6 +50,9 @@ app.set("layout", "./layouts/layout"); // not at views root
  * Routes
  *************************/
 app.use(static);
+
+// account route, week 4
+app.use("/account", accountRoute);
 
 // index route
 app.get("/", utilities.handleErrors(baseController.buildHome));

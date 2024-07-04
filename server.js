@@ -17,6 +17,8 @@ const utilities = require("./utilities");
 const session = require("express-session");//week 4 ↓
 const pool = require('./database/');
 const accountRoute = require("./routes/accountRoute");
+const bodyParser = require("body-parser")
+
 
 /* ***********************
  * Middleware week 4
@@ -39,6 +41,9 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -52,7 +57,7 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.use(static);
 
 // account route, week 4
-app.use("/account", accountRoute);
+app.use('/account',accountRoute);
 
 // index route
 app.get("/", utilities.handleErrors(baseController.buildHome));

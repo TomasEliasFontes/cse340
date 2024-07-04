@@ -306,6 +306,52 @@ input[type="submit"]:hover {
   margin-bottom: 20px;
 }
 
+/* Account Register*/
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta esto si es necesario */
+}
+
+.register-cart {
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.register-cart h1 {
+  margin-bottom: 1rem;
+}
+
+.register-cart .submitBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-cart .submitBtn:hover {
+  background-color: #0056b3;
+}
+
+#togglePassword {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #007bff;
+  margin-left: 0.5rem;
+}
+
+#togglePassword:focus {
+  outline: none;
+}
+
 /* Medium screens */
 @media screen and (min-width: 700px) {
   body {

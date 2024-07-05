@@ -1,29 +1,28 @@
 <% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
 <div class="register-container">
-    <form action="/account/register" method="post">
-      <fieldset>
-        <label for="first_name">First name*  
-          <input type="text" name="first_name" id="first_name" required>
-        </label>
-        <label for="last_name">Last name*  
-          <input type="text" name="last_name" id="last_name" required>
-        </label>
-        <label for="email">Email address*  
-          <input type="email" name="email" id="email" required>
-        </label>
-        <label for="password">Password*
-          <input type="password" id="password" name="password" minlength="12" required
-          pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}">
-        </label>
-        <p class="password-requirements">Password must be at least 12 characters long and include at least one uppercase letter, one number, and one special character.</p>
-      </fieldset>
-  
-      <input type="submit" value="Register" class="submitBtn">
-    </form>
-  </div>
+  <form action="/account/register" method="post">
+    <fieldset>
+      <label for="first_name">First name*  
+        <input type="text" name="account_firstname" id="first_name" value="<%= account_firstname %>" required>
+      </label>
+      <label for="last_name">Last name*  
+        <input type="text" name="account_lastname" id="last_name" value="<%= account_lastname %>" required>
+      </label>
+      <label for="email">Email address*  
+        <input type="email" name="account_email" id="email" value="<%= account_email %>" required>
+      </label>
+      <label for="password">Password*
+        <input type="password" id="password" name="account_password" minlength="12" required
+        pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}">
+      </label>
+      <p class="password-requirements">Password must be at least 12 characters long and include at least one uppercase letter, one number, and one special character.</p>
+    </fieldset>
+    <input type="submit" value="Register" class="submitBtn">
+  </form>
+</div>

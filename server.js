@@ -56,14 +56,14 @@ app.set("layout", "./layouts/layout"); // not at views root
  *************************/
 app.use(static);
 
-// account route, week 4
-app.use('/account',accountRoute);
-
 // index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute));
+
+// account route, week 4
+app.use('/account',accountRoute);
 
 // Error route for testing
 app.use('/', utilities.handleErrors(errorRoute));

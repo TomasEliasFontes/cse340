@@ -248,13 +248,13 @@ nav a:hover{
   width: 100px;
 }
 
-/* Account Login */
-.login-container {
+/* Account Login and Register*/
+.account-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.login-cart {
+.account-cart {
   width: 100%;
   padding: 20px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
@@ -307,14 +307,14 @@ input[type="submit"]:hover {
 }
 
 /* Account Register*/
-.register-container {
+.acccount-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ajusta esto si es necesario */
 }
 
-.register-cart {
+.account-cart {
   padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -322,11 +322,11 @@ input[type="submit"]:hover {
   background-color: white;
 }
 
-.register-cart h1 {
+.account-cart h1 {
   margin-bottom: 1rem;
 }
 
-.register-cart .submitBtn {
+.account-cart .submitBtn {
   background-color: #007bff;
   color: white;
   border: none;
@@ -335,7 +335,7 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.register-cart .submitBtn:hover {
+.account-cart .submitBtn:hover {
   background-color: #0056b3;
 }
 
@@ -351,6 +351,24 @@ input[type="submit"]:hover {
 #togglePassword:focus {
   outline: none;
 }
+
+/* Management view */
+#management {
+  background-color: white !important;
+}
+
+#management ul{
+  list-style:inside;
+}
+
+#management a{
+  color: #252232;
+}
+#management a:hover{
+  color: #4a4464;
+  outline:dashed;
+}
+
 
 /* Medium screens */
 @media screen and (min-width: 700px) {
@@ -406,7 +424,7 @@ input[type="submit"]:hover {
   }
   /* Account Login */
 
-  .login-cart {
+  .account-cart {
     width: 100%;
     max-width: 400px;  
   }

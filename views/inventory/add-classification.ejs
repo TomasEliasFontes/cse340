@@ -1,0 +1,15 @@
+<% if (errors && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <h1>Add New Classification</h1>
+  <form action="/inv/add-classification" method="post">
+    <label for="classification_name">Classification Name:</label>
+    <p><em>Name must be Alphabetic character only, without spaces. </w
+      em> </p>
+    <input type="text" id="classification_name" name="classification_name" required pattern="^[a-zA-Z0-9]+$">
+    <button type="submit">Add Classification</button>
+  </form>

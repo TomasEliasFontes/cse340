@@ -121,6 +121,7 @@ invCont.buildAddInventory = async function (req, res, next) {
       inv_price: '',
       inv_miles: '',
       inv_color: '',
+      inv_description: '',
       classification_id: ''
     });
   } catch (error) {
@@ -148,13 +149,14 @@ invCont.addInventory = async function (req, res, next) {
       inv_price: req.body.inv_price,
       inv_miles: req.body.inv_miles,
       inv_color: req.body.inv_color,
+      inv_description: req.body.inv_description,
       classification_id: req.body.classification_id
     });
   }
 
-  const { inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body;
-  const result = await invModel.addInventory(inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id);
-  
+  const { inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_description, classification_id } = req.body;
+  const result = await invModel.addInventory(inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_description, classification_id);
+
   if (result) {
     req.flash('notice', 'Inventory item added successfully');
     res.redirect('/inv/management');
@@ -173,6 +175,7 @@ invCont.addInventory = async function (req, res, next) {
       inv_price: req.body.inv_price,
       inv_miles: req.body.inv_miles,
       inv_color: req.body.inv_color,
+      inv_description: req.body.inv_description,
       classification_id: req.body.classification_id
     });
   }

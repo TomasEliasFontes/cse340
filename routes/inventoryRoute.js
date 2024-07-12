@@ -20,6 +20,7 @@ router.post('/add-classification',
 );
 
 // Route to build Add inventory
+router.get('/add-inventory', invController.buildAddInventory);
 router.post('/add-inventory', [
   body('inv_make').trim().isLength({ min: 1 }).withMessage('Please provide the make.'),
   body('inv_model').trim().isLength({ min: 1 }).withMessage('Please provide the model.'),

@@ -41,6 +41,7 @@ app.use(function(req, res, next){
   next()
 })
 
+// Body-parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -74,6 +75,20 @@ app.use(async (req, res, next) => {
 });
 
 /* ***********************
+ * Local Server Information
+ * Values from .env (environment) file
+ *************************/
+const port = process.env.PORT;
+const host = process.env.HOST;
+
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
+app.listen(port, () => {
+  console.log(`app listening on ${host}:${port}`);
+});
+
+/* ***********************
  * Express Error Handler
  * Place after all other middleware
  *************************/
@@ -86,19 +101,4 @@ app.use(async (err, req, res, next) => {
     message,
     nav,
   });
-});
-
-
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-const port = process.env.PORT;
-const host = process.env.HOST;
-
-/* ***********************
- * Log statement to confirm server operation
- *************************/
-app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`);
 });

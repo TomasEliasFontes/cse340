@@ -30,6 +30,7 @@ router.post('/add-inventory', [
   body('inv_price').trim().isFloat({ min: 0 }).withMessage('Please provide a valid price.'),
   body('inv_miles').trim().isInt({ min: 0 }).withMessage('Please provide a valid mileage.'),
   body('inv_color').trim().isLength({ min: 1 }).withMessage('Please provide the color.'),
+  body('inv_description').trim().isLength({ min: 1 }).withMessage('Please provide a description.'),
   body('classification_id').isInt().withMessage('Please select a classification.'),
 ], invController.addInventory);
 

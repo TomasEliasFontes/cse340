@@ -60,17 +60,18 @@ async function addClassification(classification_name) {
 /* ***************************
  *  Add a new inventory item
  * ************************** */
-async function addInventory(inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) {
-  try {
-    const result = await pool.query(
-      'INSERT INTO inventory (inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-      [inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id]
-    );
-    return result.rowCount;
-  } catch (err) {
-    console.error("addInventory error " + err);
-    return null;
+async function addInventory(inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_description, classification_id) {
+    try {
+      const result = await pool.query(
+        'INSERT INTO inventory (inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_description, classification_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+        [inv_make, inv_model, inv_year, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, inv_description, classification_id]
+      );
+      return result.rowCount;
+    } catch (err) {
+      console.error("addInventory error " + err);
+      return null;
+    }
   }
-}
+  
 
 module.exports = { getClassifications, getInventoryByClassificationId, getInventoryById, addClassification, addInventory }

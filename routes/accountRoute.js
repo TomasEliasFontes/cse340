@@ -7,6 +7,14 @@ const utilities = require('../utilities');
 // Deliver login view activity
 router.get('/login', utilities.handleErrors(accountController.buildLogin));
 
+// Process the login request
+router.post(
+  '/login',
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+);
+
 // Deliver registration view activity
 router.get('/register', utilities.handleErrors(accountController.buildRegister));
 

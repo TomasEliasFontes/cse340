@@ -4,8 +4,14 @@ const router = express.Router();
 const accountController = require('../controllers/accountController');
 const utilities = require('../utilities');
 
+// Deliver Account Management view
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
+
 // Deliver login view activity
 router.get('/login', utilities.handleErrors(accountController.buildLogin));
+
+// Deliver registration view activity
+router.get('/register', utilities.handleErrors(accountController.buildRegister));
 
 // Process the login request
 router.post(
@@ -15,9 +21,6 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 );
 
-// Deliver registration view activity
-router.get('/register', utilities.handleErrors(accountController.buildRegister));
-
 // Post the register 
 router.post(
   '/register',
@@ -25,5 +28,6 @@ router.post(
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
+
 
 module.exports = router;

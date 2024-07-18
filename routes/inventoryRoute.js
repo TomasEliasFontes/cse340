@@ -1,16 +1,22 @@
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
-const { body } = require('express-validator');
+const utilities = require('../utilities');
+const { body } = require('express-validator')
+
+// Route to go for /inv to /inv/management
+//router.get('/', (req, res) => {
+  //res.redirect('/inv/management');
+  //});
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
 // Route to build inventory item detail view
-router.get("/detail/:inventoryId", invController.buildByInventoryId);
+router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
 
 // Route to build Management View
-router.get('/management', invController.buildManagement);
+router.get('/', utilities.handleErrors(invController.buildManagement));
 
 // Route to build Add classification 
 router.get('/add-classification', invController.buildAddClassification);
@@ -18,6 +24,9 @@ router.post('/add-classification',
   body('classification_name').trim().isLength({ min: 1 }).withMessage('Please provide a classification name.').isAlphanumeric().withMessage('No spaces or special characters.'),
   invController.addClassification
 );
+
+// Inventory management
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 // Route to build Add inventory
 router.get('/add-inventory', invController.buildAddInventory);

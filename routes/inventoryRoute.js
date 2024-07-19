@@ -43,4 +43,10 @@ router.post('/add-inventory', [
   body('classification_id').isInt().withMessage('Please select a classification.'),
 ], invController.addInventory);
 
+// Route to build the edit view inventory
+router.get('/edit/:inv_id', utilities.handleErrors(invController.editInventoryView));
+ 
+// Route to build the update view 
+router.post("/update/", invController.updateInventory)
+
 module.exports = router;

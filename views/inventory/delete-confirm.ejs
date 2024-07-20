@@ -1,0 +1,32 @@
+<% if (Array.isArray(errors) && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  
+  <h1><%= title %></h1>
+
+  <form action="/inv/delete" method="post">
+    <div>
+      <label for="inv_make">Make:</label>
+      <input type="text" id="inv_make" name="inv_make" value="<%= inv_make %>" readonly>
+    </div>
+    <div>
+      <label for="inv_model">Model:</label>
+      <input type="text" id="inv_model" name="inv_model" value="<%= inv_model %>" readonly>
+    </div>
+    <div>
+      <label for="inv_year">Year:</label>
+      <input type="text" id="inv_year" name="inv_year" value="<%= inv_year %>" readonly>
+    </div>
+    <div>
+      <label for="inv_price">Price:</label>
+      <input type="text" id="inv_price" name="inv_price" value="<%= inv_price %>" readonly>
+    </div>
+    <input type="hidden" name="inv_id" value="<%= inv_id %>">
+    <button type="submit">Delete</button>
+  </form>
+
+  

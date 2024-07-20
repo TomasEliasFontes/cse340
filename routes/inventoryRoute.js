@@ -47,6 +47,12 @@ router.post('/add-inventory', [
 router.get('/edit/:inv_id', utilities.handleErrors(invController.editInventoryView));
  
 // Route to build the update view 
-router.post("/update/", invController.updateInventory)
+router.post("/update/", utilities.handleErrors(invController.updateInventory));
+
+//Route to display confirmation before deleting of an inventory item
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteConfirmation));
+
+//Route to delete an inventory item
+router.post("/delete", utilities.handleErrors(invController.deleteInventoryItem));
 
 module.exports = router;

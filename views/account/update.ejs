@@ -1,0 +1,39 @@
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<h1>Update Account</h1>
+
+<form action="/account/update" method="post">
+  <p>All fields are required to update</p>
+  <label for="account_firstname">First Name</label>
+  <input type="text" id="account_firstname" name="account_firstname" value="<%= userData.account_firstname %>" required>
+  
+  <label for="account_lastname">Last Name</label>
+  <input type="text" id="account_lastname" name="account_lastname" value="<%= userData.account_lastname %>" required>
+  
+  <label for="account_email">Email</label>
+  <input type="email" id="account_email" name="account_email" value="<%= userData.account_email %>" required>
+  
+  <input type="hidden" name="account_id" value="<%= userData.account_id %>">
+  
+  <button type="submit">Update</button>
+</form>
+
+<h1>Change Password</h1>
+
+<form action="/account/change-password" method="post">
+  <label for="new_password">New Password</label>
+  <input type="password" id="new_password" name="new_password" required>
+  
+  <input type="hidden" name="account_id" value="<%= userData.account_id %>">
+  
+  <button type="submit">Change Password</button>
+</form>
+<!-- Include the inv-update.js script -->
+<script src="../../js/inv-update.js"></script>

@@ -5,8 +5,7 @@ const accountController = require('../controllers/accountController');
 const utilities = require('../utilities');
 
 // Deliver Account Management view
-router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
-
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement));
 // Deliver login view activity
 router.get('/login', utilities.handleErrors(accountController.buildLogin));
 
@@ -29,5 +28,28 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
+// Logout route
+router.get('/logout',
+  utilities.checkLogin, 
+  utilities.handleErrors(accountController.logoutAccount));
+
+// Route to deliver update view
+router.get('/update', 
+  utilities.checkLogin, 
+  utilities.handleErrors(accountController.buildUpdate));
+
+// Route to handle account update
+router.post('/update', 
+  utilities.checkLogin, 
+  regValidate.updateAccountRules(), 
+  regValidate.checkUpdateData, 
+  utilities.handleErrors(accountController.updateAccount));
+
+// Route to handle password change
+router.post('/change-password', 
+  utilities.checkLogin, 
+  regValidate.changePasswordRules(), 
+  regValidate.checkPasswordData, 
+  utilities.handleErrors(accountController.changePassword));
 
 module.exports = router;

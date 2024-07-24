@@ -1,13 +1,18 @@
 <header id="top-header">
-    <div class="siteName">
-        <picture>
-            <source srcset="/images/site/favicon-32x32.png" media="(max-width: 550px)">
-            <source srcset="/images/site/favicon-32x32.png" media="(max-width: 1000px)">
-            <img title="Return to home page" src="/images/site/icon.png" alt="icon CSE Motors">
-        </picture>
-        <h1>CSE Motors</h1>
-    </div>
-    <div id="tools">
+  <div class="siteName">
+    <picture>
+      <source srcset="/images/site/favicon-32x32.png" media="(max-width: 550px)">
+      <source srcset="/images/site/favicon-32x32.png" media="(max-width: 1000px)">
+      <img title="Return to home page" src="/images/site/icon.png" alt="icon CSE Motors">
+    </picture>
+    <h1>CSE Motors</h1>
+  </div>
+  <div id="tools">
+    <% if (loggedin) { %>
+      <a title="Account Management" href="/account/">Welcome <%= userData.account_firstname %></a>
+      <a title="Logout" href="/account/logout">Logout</a>
+    <% } else { %>
       <a title="Click to log in" href="/account/login">My Account</a>
-    </div>
-  </header>
+    <% } %>
+  </div>
+</header>

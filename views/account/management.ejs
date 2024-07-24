@@ -7,4 +7,9 @@
     </ul>
 <% } %>
 
-<h2>You're logged in</h2>
+<h2>Welcome <%= userData.account_firstname %></h2>
+<% if (userData.account_type === 'Employee' || userData.account_type === 'Admin') { %>
+  <h3>Inventory Management</h3>
+  <p><a href="/inventory/">Manage Inventory</a></p>
+<% } %>
+<a href="/account/update">Update Account Information</a>

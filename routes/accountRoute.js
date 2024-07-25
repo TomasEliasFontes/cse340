@@ -52,4 +52,13 @@ router.post('/change-password',
   regValidate.checkPasswordData, 
   utilities.handleErrors(accountController.changePassword));
 
+// Route to handle adding a favorite
+router.post("/addFavorite", utilities.checkLogin, utilities.handleErrors(accountController.addFavorite));
+
+// Route to handle removing a favorite
+router.post("/removeFavorite", utilities.checkLogin, utilities.handleErrors(accountController.removeFavorite));
+
+// Route to deliver favorites view
+router.get("/favorites", utilities.checkLogin, utilities.handleErrors(accountController.buildFavorites));
+
 module.exports = router;

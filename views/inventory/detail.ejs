@@ -1,7 +1,11 @@
-
-    <div class="vehicle-detail-container">
-      <%- viewData %>
-    </div>
- 
-
-
+<div class="vehicle-detail-container">
+  <%- viewData %>
+  <!-- Añadimos un botón para agregar a favoritos -->
+  <% if (locals.loggedin) { %>
+    <form action="/account/addFavorite" method="POST">
+      <input type="hidden" name="account_id" value="<%= res.locals.userData.account_id %>">
+      <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+      <button type="submit">Add to Favorites</button>
+    </form>
+  <% } %>
+</div>

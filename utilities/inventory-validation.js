@@ -1,6 +1,5 @@
 const { body, validationResult } = require('express-validator');
-
-const { body } = require('express-validator');
+const utilities = require('../utilities');
 
 function newInventoryRules() {
   return [
@@ -9,7 +8,7 @@ function newInventoryRules() {
       .withMessage('Make is required')
       .isLength({ min: 2 })
       .withMessage('Make must be at least 2 characters long'),
-    
+
     body('inv_model')
       .notEmpty()
       .withMessage('Model is required')

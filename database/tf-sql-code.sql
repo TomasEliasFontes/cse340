@@ -252,3 +252,12 @@ WHERE inv_make = 'GM' AND inv_model = 'Hummer';
 UPDATE inventory
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+
+-- Table structure for table `favorites`
+CREATE TABLE public.favorites (
+    favorite_id serial PRIMARY KEY,
+    account_id integer NOT NULL,
+    inv_id integer NOT NULL,
+    CONSTRAINT fk_account FOREIGN KEY(account_id) REFERENCES public.account(account_id) ON DELETE CASCADE,
+    CONSTRAINT fk_inventory FOREIGN KEY(inv_id) REFERENCES public.inventory(inv_id) ON DELETE CASCADE
+);

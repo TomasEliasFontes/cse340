@@ -238,6 +238,44 @@ async function changePassword(req, res, next) {
   }
 }
 
+//Favorites Model
+const favoriteModel = require("../models/favorite-model");
+
+async function addFavorite(req, res, next) {
+  const { account_id, inv_id } = req.body;
+  const result = await favoriteModel.addFavorite(account_id, inv_id);
+  if (result) {
+    req.flash('notice', 'Vehicle added to favorites successfully.');
+    res.redirect('/account/favorites');
+  } else {
+    req.flash('notice', 'Failed to add vehicle to favorites.');
+    res.redirect('/inv/');
+  }
+}
+
+async function removeFavorite(req, res, next) {
+  const { favorite_id } = req.body;
+  const result = await favoriteModel.removeFavorite(favorite_id);
+  if (result) {
+    req.flash('notice', 'Vehicle removed from favorites successfully.');
+    res.redirect('/account/favorites');
+  } else {
+    req.flash('notice', 'Failed to remove vehicle from favorites.');
+    res.redirect('/account/favorites');
+  }
+}
+
+async function buildFavorites(req, res, next) {
+  let nav = await utilities.getNav();
+  const account_id = res.locals.accountData.account_id;
+  const favorites = await favoriteModel.getFavoritesByAccountId(account_id);
+  res.render("account/favorites", {
+    title: "Your Favorites",
+    nav,
+    favorites
+  });
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
@@ -247,5 +285,8 @@ module.exports = {
   buildUpdate,
   updateAccount,
   changePassword,
-  logoutAccount
+  logoutAccount,
+  addFavorite,
+  removeFavorite,
+  buildFavorites
 };
